@@ -3,7 +3,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
-const serverless = require("serverless-http"); // <-- ajouté
 
 // ROUTES
 const categorieRouter = require("./routes/categorie.route");
@@ -40,11 +39,9 @@ app.get("/", (req, res) => {
   res.send("bonjour");
 });
 
-// ⚠️ IMPORTANT : supprimer app.listen() pour Vercel
-// app.listen(process.env.PORT, () => {
-//   console.log(`Server is listening on port ${process.env.PORT}`);
-// });
+// LISTEN pour le local (Vercel détecte le PORT automatiquement)
+app.listen(process.env.PORT || 3001, () => {
+  console.log(`Server is listening on port ${process.env.PORT || 3001}`);
+});
 
-// EXPORTS pour Vercel
 module.exports = app;
-module.exports.handler = serverless(app); // <-- pour Vercel
