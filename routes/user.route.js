@@ -157,7 +157,7 @@ router.post('/login', async (req, res) => {
 
     const refreshToken = jwt.sign(
       { iduser: user._id },
-      process.env.REFRESH_SECRET,
+      process.env.REFRESH_TOKEN_SECRET,
       { expiresIn: '7d' }
     );
 
