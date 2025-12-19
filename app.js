@@ -22,6 +22,8 @@ app.use(cors());
 // Body parser
 app.use(express.json());
 
+app.use(express.static(__dirname + '/'));
+
 // ROUTES
 app.use("/api/categories", categorieRouter);
 app.use("/api/scategories", scategorieRouter);
